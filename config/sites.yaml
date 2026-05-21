@@ -1,0 +1,57 @@
+sites:
+  totalbusiness:
+    start_url: https://www.totalbusiness.com/
+    allowed_domains: [totalbusiness.com]
+    static_first: true
+    playwright_fallback: true
+  dewalt:
+    start_url: https://www.dewalt.com/en-us
+    allowed_domains: [dewalt.com]
+    static_first: false
+    playwright_fallback: true
+    force_playwright: true
+  tolsen:
+    start_url: https://www.tolsentools.com/product-categories/
+    allowed_domains: [tolsentools.com]
+    static_first: true
+    playwright_fallback: false
+  emtop:
+    start_url: https://www.emtop.com/products
+    allowed_domains: [emtop.com]
+    static_first: true
+    playwright_fallback: true
+  wokin:
+    start_url: https://www.wokintools.com/products/
+    allowed_domains: [wokintools.com]
+    static_first: true
+    playwright_fallback: false
+  crown_tools_eu:
+    start_url: https://crown-tools-eu.com/en/
+    allowed_domains: [crown-tools-eu.com]
+    static_first: true
+    playwright_fallback: false
+  dcktool:
+    start_url: https://www.dcktool.com/
+    allowed_domains: [dcktool.com]
+    static_first: true
+    playwright_fallback: true
+  delitools:
+    start_url: https://www.delitoolsglobal.com/
+    allowed_domains: [delitoolsglobal.com]
+    static_first: true
+    playwright_fallback: true
+  bosch:
+    start_url: https://www.bosch.com/
+    allowed_domains: [bosch.com]
+    static_first: true
+    playwright_fallback: false
+  bosch_professional:
+    start_url: https://www.bosch-professional.com/in/en/
+    allowed_domains: [bosch-professional.com]
+    static_first: true
+    playwright_fallback: true
+  ronix:
+    start_url: https://ronixtools.com/en/
+    allowed_domains: [ronixtools.com]
+    static_first: true
+    playwright_fallback: true
