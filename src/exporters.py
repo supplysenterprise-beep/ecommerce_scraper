@@ -15,6 +15,8 @@ def export_rows(rows: list[dict], base_dir: str, output_format: str) -> None:
             for r in rows:
                 f.write(json.dumps(r, ensure_ascii=False) + "\n")
     df = pd.DataFrame(rows)
+    if df.empty:
+        return
     if "csv" in formats:
         df.to_csv(f"{base_dir}/products.csv", index=False)
     if "xlsx" in formats:

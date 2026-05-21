@@ -19,16 +19,21 @@ class CrawlState:
         self.conn.commit()
 
     def add_pending(self, url: str, kind: str) -> None:
+        already_seen = self.conn.execute("select 1 from visited where url=?", (url,)).fetchone()
+        if already_seen:
+            return
         self.conn.execute("insert or ignore into pending(url,kind) values(?,?)", (url, kind))
         self.conn.commit()
 
     def pop_pending(self):
-        row = self.conn.execute("select url,kind from pending limit 1").fetchone()
-        if not row:
-            return None
-        self.conn.execute("delete from pending where url=?", (row[0],))
-        self.conn.commit()
-        return row
+        while True:
+            row = self.conn.execute("select url,kind from pending limit 1").fetchone()
+            if not row:
+                return None
+            self.conn.execute("delete from pending where url=?", (row[0],))
+            self.conn.commit()
+            if not self.conn.execute("select 1 from visited where url=?", (row[0],)).fetchone():
+                return row
 
     def mark_visited(self, url: str, kind: str) -> None:
         self.conn.execute("insert or ignore into visited(url,kind) values(?,?)", (url, kind))
