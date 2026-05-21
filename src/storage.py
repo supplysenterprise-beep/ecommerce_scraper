@@ -19,7 +19,14 @@ class CrawlState:
         self.conn.commit()
 
     def add_pending(self, url: str, kind: str) -> None:
-        self.conn.execute("insert or ignore into pending(url,kind) values(?,?)", (url, kind))
+        self.conn.execute(
+            """
+            insert or ignore into pending(url, kind)
+            select ?, ?
+            where not exists (select 1 from visited where url = ?)
+            """,
+            (url, kind, url),
+        )
         self.conn.commit()
 
     def pop_pending(self):
