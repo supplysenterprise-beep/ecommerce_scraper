@@ -192,6 +192,43 @@ python -m src.main --site bosch_professional --download-images
 python -m src.main --site all --resume --output-format all --download-images
 ```
 
+## Run commands (full quick-start)
+
+```bash
+# 1) clone + enter
+git clone https://github.com/supplysenterprise-beep/ecommerce_scraper.git
+cd ecommerce_scraper
+
+# 2) create virtual env
+python -m venv .venv
+source .venv/bin/activate   # Windows: .venv\Scripts\activate
+
+# 3) install dependencies
+pip install -U pip
+pip install -r requirements.txt
+
+# 4) Playwright browser install (needed for JS/dynamic sites)
+playwright install
+
+# 5) smoke test
+python -m src.main --site tolsen --dry-run --max-pages 5
+
+# 6) scrape example
+python -m src.main --site tolsen --max-products 20 --output-format all --download-images
+
+# 7) scrape all sites with resume
+python -m src.main --site all --resume --output-format all --download-images
+```
+
+## GUI (Streamlit)
+
+```bash
+# from repo root and active venv
+streamlit run src/gui.py
+```
+
+Then open the URL shown in terminal (usually `http://localhost:8501`), choose site/options, and click **Run scraper**.
+
 Options:
 
 ```text

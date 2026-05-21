@@ -7,3 +7,4 @@ openpyxl
 pyyaml
 python-slugify
 tenacity
+streamlit
